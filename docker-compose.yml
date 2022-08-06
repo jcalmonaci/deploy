@@ -19,7 +19,7 @@ services:
     environment:
       - VIRTUAL_HOST=portal.jalmonaci.com
     volumes:
-      - /storage/volumes/ngnix/portal:/usr/share/nginx/html:ro
+      - /storage/volumes/ngnix:/usr/share/nginx/html:ro
 
   erp:
     image: httpd
@@ -28,4 +28,4 @@ services:
     environment:
       - VIRTUAL_HOST=erp.jalmonaci.com
     volumes:
-      - /storage/volumes/apache/erp:/usr/local/apache2/htdocs
+      - /storage/volumes/apache:/usr/local/apache2/htdocs
