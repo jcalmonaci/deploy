@@ -17,15 +17,16 @@ services:
     container_name: Portal
     restart: always
     environment:
-      - VIRTUAL_HOST=portal.jalmonaci.com
+      - VIRTUAL_HOST=portal-jalmonaci.ddns.net
     volumes:
-      - /storage/volumes/ngnix:/usr/share/nginx/html:ro
+      - /storage/volumes/nginx/portal:/usr/share/nginx/html:ro
+    
 
   erp:
     image: httpd
     container_name: ERP
     restart: always
     environment:
-      - VIRTUAL_HOST=erp.jalmonaci.com
+      - VIRTUAL_HOST=erp-jalmonaci.ddns.net
     volumes:
-      - /storage/volumes/apache:/usr/local/apache2/htdocs
+      - /storage/volumes/apache/erp:/usr/local/apache2/htdocs
