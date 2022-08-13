@@ -11,9 +11,9 @@ services:
       - 443:443
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - /volumes/nginx/certs:/etc/nginx/certs:ro
-      - /volumes/nginx/vhostd:/etc/nginx/vhost.d
-      - /volumes/nginx/config/settings.conf:/etc/nginx/conf.d/custom_settings.conf:ro
+      - /storage/volumes/nginx/certs:/etc/nginx/certs:ro
+      - /storage/volumes/nginx/vhostd:/etc/nginx/vhost.d
+      - /storage/volumes/nginx/config/settings.conf:/etc/nginx/conf.d/custom_settings.conf:ro
 
   portal:
     image: nginx
