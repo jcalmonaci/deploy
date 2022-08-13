@@ -24,7 +24,7 @@ services:
     volumes:
       - /storage/volumes/nginx/portal:/usr/share/nginx/html:ro
     
-    factura:
+  factura:
     image: nginx
     container_name: Factura
     restart: always
