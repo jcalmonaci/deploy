@@ -9,6 +9,8 @@ services:
     ports:
       - 80:80
       - 443:443
+    environment:
+      - VIRTUAL_HOST=proyecto-jalmonaci.ddns.net
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - /storage/volumes/nginx/certs:/etc/nginx/certs:ro
@@ -19,8 +21,8 @@ services:
     image: nginx
     container_name: Portal
     restart: always
-    environment:
-      - VIRTUAL_HOST=portal-jalmonaci.ddns.net
+    #environment:
+    #  - VIRTUAL_HOST=portal-jalmonaci.ddns.net
     volumes:
       - /storage/volumes/nginx/portal:/usr/share/nginx/html:ro
     
@@ -28,8 +30,8 @@ services:
     image: nginx
     container_name: Factura
     restart: always
-    environment:
-      - VIRTUAL_HOST=factura-jalmonaci.ddns.net
+    #environment:
+    #  - VIRTUAL_HOST=factura-jalmonaci.ddns.net
     volumes:
       - /storage/volumes/nginx/factura:/usr/share/nginx/html:ro
 
@@ -37,7 +39,7 @@ services:
     image: httpd
     container_name: ERP
     restart: always
-    environment:
-      - VIRTUAL_HOST=erp-jalmonaci.ddns.net
+    #environment:
+    #  - VIRTUAL_HOST=erp-jalmonaci.ddns.net
     volumes:
       - /storage/volumes/apache/erp:/usr/local/apache2/htdocs
