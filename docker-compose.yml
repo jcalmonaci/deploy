@@ -24,7 +24,7 @@ services:
     environment:
       - VIRTUAL_HOST=proyecto-jalmonaci.ddns.net
       - VIRTUAL_PATH=/
-      - VIRTUAL_DEST=/
+    #  - VIRTUAL_DEST=/
     volumes:
       - /storage/volumes/nginx/portal:/usr/share/nginx/html:ro
     
