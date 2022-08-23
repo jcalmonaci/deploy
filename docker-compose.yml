@@ -3,43 +3,49 @@ version: '3.1'
 services:
 
   reverse-proxy:
-    image: jwilder/nginx-proxy:alpine
+    image: nginxproxy/nginx-proxy:alpine
     container_name: Reverse-Proxy
     restart: always
     ports:
       - 80:80
       - 443:443
-    environment:
-      - VIRTUAL_HOST=proyecto-jalmonaci.ddns.net
+    #environment:
+    #  - VIRTUAL_HOST=proyecto-jalmonaci.ddns.net
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - /storage/volumes/nginx/certs:/etc/nginx/certs:ro
       - /storage/volumes/nginx/vhostd:/etc/nginx/vhost.d
-      - /storage/volumes/deploy/nginx/settings.config:/etc/nginx/conf.d/custom_settings.conf:ro
+    #  - /storage/volumes/deploy/nginx/settings.config:/etc/nginx/conf.d/custom_settings.conf:ro
 
   portal:
     image: nginx
-    container_name: Portal
+    #container_name: Portal
     restart: always
-    #environment:
-    #  - VIRTUAL_HOST=portal-jalmonaci.ddns.net
+    environment:
+      - VIRTUAL_HOST=proyecto-jalmonaci.ddns.net
+      - VIRTUAL_PATH=/
+      - VIRTUAL_DEST=/
     volumes:
       - /storage/volumes/nginx/portal:/usr/share/nginx/html:ro
     
   factura:
     image: nginx
-    container_name: Factura
+    #container_name: Factura
     restart: always
-    #environment:
-    #  - VIRTUAL_HOST=factura-jalmonaci.ddns.net
+    environment:
+      - VIRTUAL_HOST=factura-jalmonaci.ddns.net
+      - VIRTUAL_PATH=/factura
+      - VIRTUAL_DEST=/
     volumes:
       - /storage/volumes/nginx/factura:/usr/share/nginx/html:ro
 
   erp:
     image: httpd
-    container_name: ERP
+    #container_name: ERP
     restart: always
-    #environment:
-    #  - VIRTUAL_HOST=erp-jalmonaci.ddns.net
+    environment:
+      - VIRTUAL_HOST=proyecto-jalmonaci.ddns.net
+      - VIRTUAL_PATH=/erp
+      - VIRTUAL_DEST=/
     volumes:
       - /storage/volumes/apache/erp:/usr/local/apache2/htdocs
