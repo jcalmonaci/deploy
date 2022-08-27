@@ -10,7 +10,7 @@ services:
       - 80:80
       - 443:443
     #environment:
-    #  - VIRTUAL_HOST=proyecto-jalmonaci.ddns.net
+    # - VIRTUAL_HOST=proyecto-jalmonaci.ddns.net
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - /storage/volumes/nginx/certs:/etc/nginx/certs:ro
