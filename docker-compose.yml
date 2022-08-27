@@ -10,7 +10,7 @@ services:
       - 80:80
       - 443:443
     environment:
-      - VIRTUAL_HOST=apps-mrsi.ddns.net-cambiar por mi liga 
+      - VIRTUAL_HOST=proyecto-jalmonaci.ddns.net 
       - VIRTUAL_PATH=/.well-known 
     # - VIRTUAL_HOST=proyecto-jalmonaci.ddns.net
     volumes:
@@ -51,6 +51,8 @@ services:
       - VIRTUAL_HOST=proyecto-jalmonaci.ddns.net
       - VIRTUAL_PATH=/factura
       - VIRTUAL_DEST=/
+      - LETSENCRYPT_HOST=proyecto-jalmonaci.ddns.net
+      - LETSENCRYPT_EMAIL=jc.almonaci@cor-com.com.mx
     volumes:
       - /storage/volumes/nginx/factura:/usr/share/nginx/html:ro
 
@@ -62,5 +64,7 @@ services:
       - VIRTUAL_HOST=proyecto-jalmonaci.ddns.net
       - VIRTUAL_PATH=/erp
       - VIRTUAL_DEST=/
+      - LETSENCRYPT_HOST=proyecto-jalmonaci.ddns.net
+      - LETSENCRYPT_EMAIL=jc.almonaci@cor-com.com.mx
     volumes:
       - /storage/volumes/apache/erp:/usr/local/apache2/htdocs
