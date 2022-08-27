@@ -33,7 +33,7 @@ services:
     #container_name: Factura
     restart: always
     environment:
-      - VIRTUAL_HOST=factura-jalmonaci.ddns.net
+      - VIRTUAL_HOST=proyecto-jalmonaci.ddns.net
       - VIRTUAL_PATH=/factura
       - VIRTUAL_DEST=/
     volumes:
