@@ -9,14 +9,29 @@ services:
     ports:
       - 80:80
       - 443:443
-    #environment:
+    environment:
+      - VIRTUAL_HOST=apps-mrsi.ddns.net-cambiar por mi liga 
+      - VIRTUAL_PATH=/.well-known 
     # - VIRTUAL_HOST=proyecto-jalmonaci.ddns.net
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - /storage/volumes/nginx/certs:/etc/nginx/certs:ro
       - /storage/volumes/nginx/vhostd:/etc/nginx/vhost.d
+      - /storage/volumes/nginx/html:/usr/share/nginx/html:rw
     #  - /storage/volumes/deploy/nginx/settings.config:/etc/nginx/conf.d/custom_settings.conf:ro
 
+  lets-encrypt: 
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    container_name: 'Lets-Encrypt'
+    restart: always
+    environment:
+      - NGINX_PROXY_CONTAINER=Reverse-Proxy  
+    volumes:
+      - /storage/volumes/nginx/certs:/etc/nginx/certs
+      - /storage/volumes/nginx/vhostd:/etc/nginx/vhost.d
+      - /storage/volumes/nginx/html:/usr/share/nginx/html:rw
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+  
   portal:
     image: nginx
     #container_name: Portal
@@ -27,7 +42,7 @@ services:
     #  - VIRTUAL_DEST=/
     volumes:
       - /storage/volumes/nginx/portal:/usr/share/nginx/html:ro
-    
+
   factura:
     image: nginx
     #container_name: Factura
